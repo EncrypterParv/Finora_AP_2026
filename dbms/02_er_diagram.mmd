@@ -1,0 +1,127 @@
+erDiagram
+    USERS {
+        varchar36 id PK
+        varchar255 email UK
+        varchar255 hashed_password
+        varchar255 full_name
+        varchar10 currency
+        jsonb preferences
+        timestamptz created_at
+        timestamptz updated_at
+    }
+    BANK_ACCOUNTS {
+        varchar36 id PK
+        varchar36 user_id FK
+        varchar100 institution_name
+        varchar50 account_number_masked
+        varchar50 account_type
+        numeric14_2 current_balance
+        varchar10 currency
+        varchar50 adapter_type
+        timestamptz last_synced_at
+        timestamptz created_at
+        timestamptz updated_at
+    }
+    CATEGORIES {
+        varchar36 id PK
+        varchar100 name UK
+        varchar100 slug UK
+        varchar50 icon
+        varchar20 color_hex
+        boolean is_system
+        varchar36 parent_id FK
+    }
+    MERCHANTS {
+        varchar36 id PK
+        varchar150 clean_name UK
+        jsonb raw_patterns
+        varchar36 default_category_id FK
+        varchar255 logo_url
+        timestamptz created_at
+    }
+    TRANSACTIONS {
+        varchar36 id PK
+        varchar36 user_id FK
+        varchar36 account_id FK
+        varchar36 category_id FK
+        varchar36 merchant_id FK
+        timestamptz occurred_at
+        numeric14_2 amount
+        varchar10 currency
+        varchar20 transaction_type
+        varchar500 raw_description
+        numeric14_2 balance_before
+        numeric14_2 balance_after
+        varchar100 reference_id
+        varchar50 source
+        varchar64 dedup_hash UK
+        jsonb tax_info
+        jsonb metadata
+        timestamptz created_at
+    }
+    BUDGETS {
+        varchar36 id PK
+        varchar36 user_id FK
+        varchar100 name
+        varchar20 period
+        numeric14_2 total_limit
+        date start_date
+        date end_date
+        timestamptz created_at
+    }
+    BUDGET_CATEGORIES {
+        varchar36 id PK
+        varchar36 budget_id FK
+        varchar36 category_id FK
+        numeric14_2 allocated_amount
+        numeric5_2 alert_threshold_percentage
+    }
+    FINANCIAL_GOALS {
+        varchar36 id PK
+        varchar36 user_id FK
+        varchar150 title
+        varchar50 goal_type
+        numeric14_2 target_amount
+        numeric14_2 current_saved
+        numeric14_2 monthly_contribution
+        date target_date
+        numeric5_2 expected_annual_return_pct
+        varchar20 status
+        timestamptz created_at
+        timestamptz updated_at
+    }
+    GOAL_MILESTONES {
+        varchar36 id PK
+        varchar36 goal_id FK
+        varchar150 title
+        numeric14_2 target_amount
+        date target_date
+        boolean is_achieved
+        timestamptz achieved_at
+    }
+    ML_PROFILES {
+        varchar36 id PK
+        varchar36 user_id FK
+        numeric5_2 behavioural_score
+        numeric5_4 impulse_spending_index
+        numeric14_2 average_monthly_burn
+        numeric5_2 predicted_savings_rate
+        jsonb category_spending_distribution
+        jsonb weekend_vs_weekday_ratio
+        jsonb feature_weights
+        timestamptz last_computed_at
+    }
+
+    USERS ||--o{ BANK_ACCOUNTS : owns
+    USERS ||--o{ TRANSACTIONS : records
+    USERS ||--o{ BUDGETS : creates
+    USERS ||--o{ FINANCIAL_GOALS : sets
+    USERS ||--o{ ML_PROFILES : has
+    CATEGORIES o|--o{ CATEGORIES : parent_of
+    CATEGORIES o|--o{ MERCHANTS : suggested_for
+    BANK_ACCOUNTS ||--o{ TRANSACTIONS : contains
+    CATEGORIES o|--o{ TRANSACTIONS : classifies
+    MERCHANTS o|--o{ TRANSACTIONS : identifies
+    BUDGETS ||--o{ BUDGET_CATEGORIES : allocates
+    CATEGORIES ||--o{ BUDGET_CATEGORIES : receives
+    FINANCIAL_GOALS ||--o{ GOAL_MILESTONES : tracks
