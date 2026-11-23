@@ -1,0 +1,30 @@
+=== R4 run 1 ===
+SET
+Index Scan using uq_users_email on users  (cost=0.28..8.29 rows=1 width=100) (actual time=0.006..0.006 rows=1.00 loops=1)
+  Index Cond: ((email)::text = 'demo@financialcall.ai'::text)
+  Index Searches: 1
+  Buffers: shared hit=3
+Planning:
+  Buffers: shared hit=97
+Planning Time: 0.172 ms
+Execution Time: 0.021 ms
+=== R4 run 2 ===
+SET
+Index Scan using uq_users_email on users  (cost=0.28..8.29 rows=1 width=100) (actual time=0.007..0.007 rows=1.00 loops=1)
+  Index Cond: ((email)::text = 'demo@financialcall.ai'::text)
+  Index Searches: 1
+  Buffers: shared hit=3
+Planning:
+  Buffers: shared hit=97
+Planning Time: 0.205 ms
+Execution Time: 0.024 ms
+=== R4 run 3 ===
+SET
+Index Scan using uq_users_email on users  (cost=0.28..8.29 rows=1 width=100) (actual time=0.006..0.006 rows=1.00 loops=1)
+  Index Cond: ((email)::text = 'demo@financialcall.ai'::text)
+  Index Searches: 1
+  Buffers: shared hit=3
+Planning:
+  Buffers: shared hit=97
+Planning Time: 0.167 ms
+Execution Time: 0.022 ms

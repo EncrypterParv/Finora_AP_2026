@@ -1,0 +1,33 @@
+=== W4 run 1 ===
+BEGIN
+SET
+DELETE 1
+Insert on merchants  (cost=0.00..0.01 rows=0 width=0) (actual time=0.078..0.078 rows=0.00 loops=1)
+  Buffers: shared hit=10
+  ->  Result  (cost=0.00..0.01 rows=1 width=1054) (actual time=0.003..0.003 rows=1.00 loops=1)
+Planning Time: 0.016 ms
+Trigger for constraint fk_merchants_default_category_id: time=0.284 calls=1
+Execution Time: 0.368 ms
+ROLLBACK
+=== W4 run 2 ===
+BEGIN
+SET
+DELETE 1
+Insert on merchants  (cost=0.00..0.01 rows=0 width=0) (actual time=0.076..0.076 rows=0.00 loops=1)
+  Buffers: shared hit=10
+  ->  Result  (cost=0.00..0.01 rows=1 width=1054) (actual time=0.003..0.003 rows=1.00 loops=1)
+Planning Time: 0.016 ms
+Trigger for constraint fk_merchants_default_category_id: time=0.200 calls=1
+Execution Time: 0.283 ms
+ROLLBACK
+=== W4 run 3 ===
+BEGIN
+SET
+DELETE 1
+Insert on merchants  (cost=0.00..0.01 rows=0 width=0) (actual time=0.071..0.071 rows=0.00 loops=1)
+  Buffers: shared hit=10
+  ->  Result  (cost=0.00..0.01 rows=1 width=1054) (actual time=0.002..0.002 rows=1.00 loops=1)
+Planning Time: 0.013 ms
+Trigger for constraint fk_merchants_default_category_id: time=0.235 calls=1
+Execution Time: 0.310 ms
+ROLLBACK

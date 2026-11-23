@@ -1,0 +1,33 @@
+=== W2 run 1 ===
+BEGIN
+SET
+DELETE 1
+Insert on bank_accounts  (cost=0.00..0.02 rows=0 width=0) (actual time=0.145..0.145 rows=0.00 loops=1)
+  Buffers: shared hit=17
+  ->  Result  (cost=0.00..0.02 rows=1 width=832) (actual time=0.002..0.002 rows=1.00 loops=1)
+Planning Time: 0.023 ms
+Trigger for constraint fk_bank_accounts_user_id: time=0.230 calls=1
+Execution Time: 0.381 ms
+ROLLBACK
+=== W2 run 2 ===
+BEGIN
+SET
+DELETE 1
+Insert on bank_accounts  (cost=0.00..0.02 rows=0 width=0) (actual time=0.113..0.113 rows=0.00 loops=1)
+  Buffers: shared hit=17
+  ->  Result  (cost=0.00..0.02 rows=1 width=832) (actual time=0.002..0.002 rows=1.00 loops=1)
+Planning Time: 0.019 ms
+Trigger for constraint fk_bank_accounts_user_id: time=0.230 calls=1
+Execution Time: 0.351 ms
+ROLLBACK
+=== W2 run 3 ===
+BEGIN
+SET
+DELETE 1
+Insert on bank_accounts  (cost=0.00..0.02 rows=0 width=0) (actual time=0.138..0.138 rows=0.00 loops=1)
+  Buffers: shared hit=17
+  ->  Result  (cost=0.00..0.02 rows=1 width=832) (actual time=0.002..0.002 rows=1.00 loops=1)
+Planning Time: 0.021 ms
+Trigger for constraint fk_bank_accounts_user_id: time=0.231 calls=1
+Execution Time: 0.377 ms
+ROLLBACK

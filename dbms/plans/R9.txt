@@ -1,0 +1,78 @@
+=== R9 run 1 ===
+SET
+Sort  (cost=116.59..116.61 rows=9 width=151) (actual time=0.126..0.127 rows=9.00 loops=1)
+  Sort Key: bc.allocated_amount DESC
+  Sort Method: quicksort  Memory: 26kB
+  Buffers: shared hit=74
+  ->  Nested Loop Left Join  (cost=0.42..116.45 rows=9 width=151) (actual time=0.008..0.114 rows=9.00 loops=1)
+        Buffers: shared hit=71
+        ->  Nested Loop Left Join  (cost=0.29..115.04 rows=9 width=112) (actual time=0.005..0.107 rows=9.00 loops=1)
+              Buffers: shared hit=53
+              ->  Seq Scan on budgets b  (cost=0.00..79.44 rows=3 width=75) (actual time=0.003..0.096 rows=3.00 loops=1)
+                    Filter: ((user_id)::text = 'usr_01h7x8a9b2c3d4e5f6g7h8j9k0'::text)
+                    Rows Removed by Filter: 2997
+                    Buffers: shared hit=41
+              ->  Index Scan using uq_budget_categories_budget_id_category_id on budget_categories bc  (cost=0.29..11.84 rows=3 width=50) (actual time=0.002..0.003 rows=3.00 loops=3)
+                    Index Cond: ((budget_id)::text = (b.id)::text)
+                    Index Searches: 3
+                    Buffers: shared hit=12
+        ->  Index Scan using pk_categories on categories c  (cost=0.14..0.16 rows=1 width=51) (actual time=0.001..0.001 rows=1.00 loops=9)
+              Index Cond: ((id)::text = (bc.category_id)::text)
+              Index Searches: 9
+              Buffers: shared hit=18
+Planning:
+  Buffers: shared hit=333
+Planning Time: 0.519 ms
+Execution Time: 0.150 ms
+=== R9 run 2 ===
+SET
+Sort  (cost=116.59..116.61 rows=9 width=151) (actual time=0.139..0.139 rows=9.00 loops=1)
+  Sort Key: bc.allocated_amount DESC
+  Sort Method: quicksort  Memory: 26kB
+  Buffers: shared hit=71
+  ->  Nested Loop Left Join  (cost=0.42..116.45 rows=9 width=151) (actual time=0.009..0.125 rows=9.00 loops=1)
+        Buffers: shared hit=68
+        ->  Nested Loop Left Join  (cost=0.29..115.04 rows=9 width=112) (actual time=0.007..0.117 rows=9.00 loops=1)
+              Buffers: shared hit=50
+              ->  Seq Scan on budgets b  (cost=0.00..79.44 rows=3 width=75) (actual time=0.004..0.107 rows=3.00 loops=1)
+                    Filter: ((user_id)::text = 'usr_01h7x8a9b2c3d4e5f6g7h8j9k0'::text)
+                    Rows Removed by Filter: 2997
+                    Buffers: shared hit=41
+              ->  Index Scan using uq_budget_categories_budget_id_category_id on budget_categories bc  (cost=0.29..11.84 rows=3 width=50) (actual time=0.003..0.003 rows=3.00 loops=3)
+                    Index Cond: ((budget_id)::text = (b.id)::text)
+                    Index Searches: 3
+                    Buffers: shared hit=9
+        ->  Index Scan using pk_categories on categories c  (cost=0.14..0.16 rows=1 width=51) (actual time=0.001..0.001 rows=1.00 loops=9)
+              Index Cond: ((id)::text = (bc.category_id)::text)
+              Index Searches: 9
+              Buffers: shared hit=18
+Planning:
+  Buffers: shared hit=333
+Planning Time: 0.561 ms
+Execution Time: 0.164 ms
+=== R9 run 3 ===
+SET
+Sort  (cost=116.59..116.61 rows=9 width=151) (actual time=0.192..0.192 rows=9.00 loops=1)
+  Sort Key: bc.allocated_amount DESC
+  Sort Method: quicksort  Memory: 26kB
+  Buffers: shared hit=71
+  ->  Nested Loop Left Join  (cost=0.42..116.45 rows=9 width=151) (actual time=0.011..0.175 rows=9.00 loops=1)
+        Buffers: shared hit=68
+        ->  Nested Loop Left Join  (cost=0.29..115.04 rows=9 width=112) (actual time=0.008..0.166 rows=9.00 loops=1)
+              Buffers: shared hit=50
+              ->  Seq Scan on budgets b  (cost=0.00..79.44 rows=3 width=75) (actual time=0.005..0.147 rows=3.00 loops=1)
+                    Filter: ((user_id)::text = 'usr_01h7x8a9b2c3d4e5f6g7h8j9k0'::text)
+                    Rows Removed by Filter: 2997
+                    Buffers: shared hit=41
+              ->  Index Scan using uq_budget_categories_budget_id_category_id on budget_categories bc  (cost=0.29..11.84 rows=3 width=50) (actual time=0.005..0.005 rows=3.00 loops=3)
+                    Index Cond: ((budget_id)::text = (b.id)::text)
+                    Index Searches: 3
+                    Buffers: shared hit=9
+        ->  Index Scan using pk_categories on categories c  (cost=0.14..0.16 rows=1 width=51) (actual time=0.001..0.001 rows=1.00 loops=9)
+              Index Cond: ((id)::text = (bc.category_id)::text)
+              Index Searches: 9
+              Buffers: shared hit=18
+Planning:
+  Buffers: shared hit=333
+Planning Time: 0.866 ms
+Execution Time: 0.234 ms

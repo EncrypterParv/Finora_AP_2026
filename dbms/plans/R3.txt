@@ -1,0 +1,30 @@
+=== R3 run 1 ===
+SET
+Index Scan using uq_users_email on users  (cost=0.28..8.29 rows=1 width=33) (actual time=0.008..0.010 rows=1.00 loops=1)
+  Index Cond: ((email)::text = 'yash@finora.app'::text)
+  Index Searches: 1
+  Buffers: shared hit=5
+Planning:
+  Buffers: shared hit=79
+Planning Time: 0.161 ms
+Execution Time: 0.026 ms
+=== R3 run 2 ===
+SET
+Index Scan using uq_users_email on users  (cost=0.28..8.29 rows=1 width=33) (actual time=0.014..0.015 rows=1.00 loops=1)
+  Index Cond: ((email)::text = 'yash@finora.app'::text)
+  Index Searches: 1
+  Buffers: shared hit=3
+Planning:
+  Buffers: shared hit=79
+Planning Time: 0.213 ms
+Execution Time: 0.038 ms
+=== R3 run 3 ===
+SET
+Index Scan using uq_users_email on users  (cost=0.28..8.29 rows=1 width=33) (actual time=0.009..0.009 rows=1.00 loops=1)
+  Index Cond: ((email)::text = 'yash@finora.app'::text)
+  Index Searches: 1
+  Buffers: shared hit=3
+Planning:
+  Buffers: shared hit=79
+Planning Time: 0.225 ms
+Execution Time: 0.030 ms

@@ -1,0 +1,45 @@
+=== W5 run 1 ===
+BEGIN
+SET
+DELETE 1
+Insert on transactions  (cost=0.00..0.01 rows=0 width=0) (actual time=0.081..0.082 rows=0.00 loops=1)
+  Buffers: shared hit=24
+  ->  Result  (cost=0.00..0.01 rows=1 width=1678) (actual time=0.002..0.002 rows=1.00 loops=1)
+Planning Time: 0.015 ms
+Trigger for constraint fk_transactions_user_id: time=0.200 calls=1
+Trigger for constraint fk_transactions_account_id: time=0.113 calls=1
+Trigger for constraint fk_transactions_category_id: time=0.118 calls=1
+Trigger for constraint fk_transactions_merchant_id: time=0.099 calls=1
+Trigger for constraint fk_transactions_account_user: time=0.034 calls=1
+Execution Time: 0.652 ms
+ROLLBACK
+=== W5 run 2 ===
+BEGIN
+SET
+DELETE 1
+Insert on transactions  (cost=0.00..0.01 rows=0 width=0) (actual time=0.072..0.072 rows=0.00 loops=1)
+  Buffers: shared hit=24
+  ->  Result  (cost=0.00..0.01 rows=1 width=1678) (actual time=0.002..0.002 rows=1.00 loops=1)
+Planning Time: 0.012 ms
+Trigger for constraint fk_transactions_user_id: time=0.186 calls=1
+Trigger for constraint fk_transactions_account_id: time=0.111 calls=1
+Trigger for constraint fk_transactions_category_id: time=0.110 calls=1
+Trigger for constraint fk_transactions_merchant_id: time=0.086 calls=1
+Trigger for constraint fk_transactions_account_user: time=0.028 calls=1
+Execution Time: 0.598 ms
+ROLLBACK
+=== W5 run 3 ===
+BEGIN
+SET
+DELETE 1
+Insert on transactions  (cost=0.00..0.01 rows=0 width=0) (actual time=0.076..0.076 rows=0.00 loops=1)
+  Buffers: shared hit=24
+  ->  Result  (cost=0.00..0.01 rows=1 width=1678) (actual time=0.002..0.002 rows=1.00 loops=1)
+Planning Time: 0.014 ms
+Trigger for constraint fk_transactions_user_id: time=0.234 calls=1
+Trigger for constraint fk_transactions_account_id: time=0.154 calls=1
+Trigger for constraint fk_transactions_category_id: time=0.150 calls=1
+Trigger for constraint fk_transactions_merchant_id: time=0.109 calls=1
+Trigger for constraint fk_transactions_account_user: time=0.035 calls=1
+Execution Time: 0.765 ms
+ROLLBACK

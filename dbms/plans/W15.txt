@@ -1,0 +1,33 @@
+=== W15 run 1 ===
+BEGIN
+SET
+DELETE 1
+Insert on ml_profiles  (cost=0.00..0.01 rows=0 width=0) (actual time=0.089..0.089 rows=0.00 loops=1)
+  Buffers: shared hit=14
+  ->  Result  (cost=0.00..0.01 rows=1 width=338) (actual time=0.001..0.001 rows=1.00 loops=1)
+Planning Time: 0.022 ms
+Trigger for constraint fk_ml_profiles_user_id: time=0.254 calls=1
+Execution Time: 0.348 ms
+ROLLBACK
+=== W15 run 2 ===
+BEGIN
+SET
+DELETE 1
+Insert on ml_profiles  (cost=0.00..0.01 rows=0 width=0) (actual time=0.059..0.059 rows=0.00 loops=1)
+  Buffers: shared hit=14
+  ->  Result  (cost=0.00..0.01 rows=1 width=338) (actual time=0.001..0.001 rows=1.00 loops=1)
+Planning Time: 0.010 ms
+Trigger for constraint fk_ml_profiles_user_id: time=0.175 calls=1
+Execution Time: 0.238 ms
+ROLLBACK
+=== W15 run 3 ===
+BEGIN
+SET
+DELETE 1
+Insert on ml_profiles  (cost=0.00..0.01 rows=0 width=0) (actual time=0.059..0.059 rows=0.00 loops=1)
+  Buffers: shared hit=14
+  ->  Result  (cost=0.00..0.01 rows=1 width=338) (actual time=0.001..0.001 rows=1.00 loops=1)
+Planning Time: 0.010 ms
+Trigger for constraint fk_ml_profiles_user_id: time=0.173 calls=1
+Execution Time: 0.235 ms
+ROLLBACK

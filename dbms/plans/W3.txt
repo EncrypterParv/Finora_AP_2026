@@ -1,0 +1,33 @@
+=== W3 run 1 ===
+BEGIN
+SET
+DELETE 1
+Insert on categories  (cost=0.00..0.01 rows=0 width=0) (actual time=0.023..0.023 rows=0.00 loops=1)
+  Buffers: shared hit=10
+  ->  Result  (cost=0.00..0.01 rows=1 width=793) (actual time=0.003..0.003 rows=1.00 loops=1)
+Planning Time: 0.006 ms
+Trigger for constraint fk_categories_parent_id: time=0.001 calls=1
+Execution Time: 0.027 ms
+ROLLBACK
+=== W3 run 2 ===
+BEGIN
+SET
+DELETE 1
+Insert on categories  (cost=0.00..0.01 rows=0 width=0) (actual time=0.028..0.028 rows=0.00 loops=1)
+  Buffers: shared hit=10
+  ->  Result  (cost=0.00..0.01 rows=1 width=793) (actual time=0.003..0.003 rows=1.00 loops=1)
+Planning Time: 0.008 ms
+Trigger for constraint fk_categories_parent_id: time=0.001 calls=1
+Execution Time: 0.033 ms
+ROLLBACK
+=== W3 run 3 ===
+BEGIN
+SET
+DELETE 1
+Insert on categories  (cost=0.00..0.01 rows=0 width=0) (actual time=0.029..0.029 rows=0.00 loops=1)
+  Buffers: shared hit=10
+  ->  Result  (cost=0.00..0.01 rows=1 width=793) (actual time=0.003..0.003 rows=1.00 loops=1)
+Planning Time: 0.009 ms
+Trigger for constraint fk_categories_parent_id: time=0.001 calls=1
+Execution Time: 0.035 ms
+ROLLBACK

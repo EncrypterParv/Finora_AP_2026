@@ -1,0 +1,30 @@
+=== R21 run 1 ===
+SET
+Limit  (cost=0.00..0.03 rows=1 width=48) (actual time=0.004..0.005 rows=1.00 loops=1)
+  Buffers: shared hit=2
+  ->  Seq Scan on users  (cost=0.00..27.00 rows=1000 width=48) (actual time=0.004..0.004 rows=1.00 loops=1)
+        Buffers: shared hit=2
+Planning:
+  Buffers: shared hit=69
+Planning Time: 0.141 ms
+Execution Time: 0.015 ms
+=== R21 run 2 ===
+SET
+Limit  (cost=0.00..0.03 rows=1 width=48) (actual time=0.005..0.006 rows=1.00 loops=1)
+  Buffers: shared hit=2
+  ->  Seq Scan on users  (cost=0.00..27.00 rows=1000 width=48) (actual time=0.005..0.005 rows=1.00 loops=1)
+        Buffers: shared hit=2
+Planning:
+  Buffers: shared hit=69
+Planning Time: 0.163 ms
+Execution Time: 0.018 ms
+=== R21 run 3 ===
+SET
+Limit  (cost=0.00..0.03 rows=1 width=48) (actual time=0.006..0.006 rows=1.00 loops=1)
+  Buffers: shared hit=2
+  ->  Seq Scan on users  (cost=0.00..27.00 rows=1000 width=48) (actual time=0.006..0.006 rows=1.00 loops=1)
+        Buffers: shared hit=2
+Planning:
+  Buffers: shared hit=69
+Planning Time: 0.524 ms
+Execution Time: 0.020 ms
