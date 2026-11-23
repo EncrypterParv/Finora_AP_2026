@@ -1,0 +1,78 @@
+=== R16 run 1 ===
+SET
+Finalize GroupAggregate  (cost=9931.95..9932.95 rows=3 width=47) (actual time=9.995..11.188 rows=3.00 loops=1)
+  Group Key: transaction_type
+  Buffers: shared hit=7403
+  ->  Gather Merge  (cost=9931.95..9932.84 rows=7 width=47) (actual time=9.957..11.163 rows=8.00 loops=1)
+        Workers Planned: 2
+        Workers Launched: 2
+        Buffers: shared hit=7403
+        ->  Partial GroupAggregate  (cost=8931.92..8932.01 rows=3 width=47) (actual time=7.367..7.370 rows=2.67 loops=3)
+              Group Key: transaction_type
+              Buffers: shared hit=7403
+              ->  Sort  (cost=8931.92..8931.94 rows=5 width=15) (actual time=7.351..7.351 rows=4.00 loops=3)
+                    Sort Key: transaction_type
+                    Sort Method: quicksort  Memory: 25kB
+                    Buffers: shared hit=7403
+                    Worker 0:  Sort Method: quicksort  Memory: 25kB
+                    Worker 1:  Sort Method: quicksort  Memory: 25kB
+                    ->  Parallel Seq Scan on transactions  (cost=0.00..8931.87 rows=5 width=15) (actual time=1.221..7.289 rows=4.00 loops=3)
+                          Filter: ((occurred_at >= '2026-10-01 00:00:00+05:30'::timestamp with time zone) AND (occurred_at <= '2026-10-31 23:59:59+05:30'::timestamp with time zone) AND ((user_id)::text = 'usr_01h7x8a9b2c3d4e5f6g7h8j9k0'::text))
+                          Rows Removed by Filter: 66663
+                          Buffers: shared hit=7327
+Planning:
+  Buffers: shared hit=129
+Planning Time: 0.234 ms
+Execution Time: 11.229 ms
+=== R16 run 2 ===
+SET
+Finalize GroupAggregate  (cost=9931.95..9932.95 rows=3 width=47) (actual time=8.877..9.761 rows=3.00 loops=1)
+  Group Key: transaction_type
+  Buffers: shared hit=7403
+  ->  Gather Merge  (cost=9931.95..9932.84 rows=7 width=47) (actual time=8.867..9.753 rows=9.00 loops=1)
+        Workers Planned: 2
+        Workers Launched: 2
+        Buffers: shared hit=7403
+        ->  Partial GroupAggregate  (cost=8931.92..8932.01 rows=3 width=47) (actual time=7.122..7.126 rows=3.00 loops=3)
+              Group Key: transaction_type
+              Buffers: shared hit=7403
+              ->  Sort  (cost=8931.92..8931.94 rows=5 width=15) (actual time=7.109..7.110 rows=4.00 loops=3)
+                    Sort Key: transaction_type
+                    Sort Method: quicksort  Memory: 25kB
+                    Buffers: shared hit=7403
+                    Worker 0:  Sort Method: quicksort  Memory: 25kB
+                    Worker 1:  Sort Method: quicksort  Memory: 25kB
+                    ->  Parallel Seq Scan on transactions  (cost=0.00..8931.87 rows=5 width=15) (actual time=1.335..7.032 rows=4.00 loops=3)
+                          Filter: ((occurred_at >= '2026-10-01 00:00:00+05:30'::timestamp with time zone) AND (occurred_at <= '2026-10-31 23:59:59+05:30'::timestamp with time zone) AND ((user_id)::text = 'usr_01h7x8a9b2c3d4e5f6g7h8j9k0'::text))
+                          Rows Removed by Filter: 66663
+                          Buffers: shared hit=7327
+Planning:
+  Buffers: shared hit=129
+Planning Time: 0.245 ms
+Execution Time: 9.812 ms
+=== R16 run 3 ===
+SET
+Finalize GroupAggregate  (cost=9931.95..9932.95 rows=3 width=47) (actual time=9.545..10.848 rows=3.00 loops=1)
+  Group Key: transaction_type
+  Buffers: shared hit=7403
+  ->  Gather Merge  (cost=9931.95..9932.84 rows=7 width=47) (actual time=9.533..10.835 rows=7.00 loops=1)
+        Workers Planned: 2
+        Workers Launched: 2
+        Buffers: shared hit=7403
+        ->  Partial GroupAggregate  (cost=8931.92..8932.01 rows=3 width=47) (actual time=7.209..7.212 rows=2.33 loops=3)
+              Group Key: transaction_type
+              Buffers: shared hit=7403
+              ->  Sort  (cost=8931.92..8931.94 rows=5 width=15) (actual time=7.190..7.191 rows=4.00 loops=3)
+                    Sort Key: transaction_type
+                    Sort Method: quicksort  Memory: 25kB
+                    Buffers: shared hit=7403
+                    Worker 0:  Sort Method: quicksort  Memory: 25kB
+                    Worker 1:  Sort Method: quicksort  Memory: 25kB
+                    ->  Parallel Seq Scan on transactions  (cost=0.00..8931.87 rows=5 width=15) (actual time=1.213..7.139 rows=4.00 loops=3)
+                          Filter: ((occurred_at >= '2026-10-01 00:00:00+05:30'::timestamp with time zone) AND (occurred_at <= '2026-10-31 23:59:59+05:30'::timestamp with time zone) AND ((user_id)::text = 'usr_01h7x8a9b2c3d4e5f6g7h8j9k0'::text))
+                          Rows Removed by Filter: 66663
+                          Buffers: shared hit=7327
+Planning:
+  Buffers: shared hit=129
+Planning Time: 0.283 ms
+Execution Time: 10.901 ms

@@ -1,0 +1,114 @@
+=== R7 run 1 ===
+SET
+Limit  (cost=9489.05..9494.87 rows=50 width=292) (actual time=8.348..9.713 rows=50.00 loops=1)
+  Buffers: shared hit=7358
+  ->  Gather Merge  (cost=9489.05..9514.44 rows=218 width=292) (actual time=8.347..9.710 rows=50.00 loops=1)
+        Workers Planned: 2
+        Workers Launched: 2
+        Buffers: shared hit=7358
+        ->  Sort  (cost=8489.03..8489.26 rows=91 width=292) (actual time=6.503..6.518 rows=42.33 loops=3)
+              Sort Key: t.occurred_at DESC
+              Sort Method: quicksort  Memory: 70kB
+              Buffers: shared hit=7358
+              Worker 0:  Sort Method: quicksort  Memory: 54kB
+              Worker 1:  Sort Method: quicksort  Memory: 51kB
+              ->  Hash Left Join  (cost=12.20..8486.07 rows=91 width=292) (actual time=0.162..6.458 rows=66.67 loops=3)
+                    Hash Cond: ((t.merchant_id)::text = (m.id)::text)
+                    Buffers: shared hit=7342
+                    ->  Hash Left Join  (cost=1.45..8475.08 rows=91 width=251) (actual time=0.081..6.354 rows=66.67 loops=3)
+                          Hash Cond: ((t.category_id)::text = (c.id)::text)
+                          Buffers: shared hit=7330
+                          ->  Parallel Seq Scan on transactions t  (cost=0.00..8473.33 rows=91 width=252) (actual time=0.026..6.256 rows=66.67 loops=3)
+                                Filter: ((user_id)::text = 'usr_01h7x8a9b2c3d4e5f6g7h8j9k0'::text)
+                                Rows Removed by Filter: 66600
+                                Buffers: shared hit=7327
+                          ->  Hash  (cost=1.20..1.20 rows=20 width=23) (actual time=0.051..0.052 rows=20.00 loops=3)
+                                Buckets: 1024  Batches: 1  Memory Usage: 10kB
+                                Buffers: shared hit=3
+                                ->  Seq Scan on categories c  (cost=0.00..1.20 rows=20 width=23) (actual time=0.035..0.037 rows=20.00 loops=3)
+                                      Buffers: shared hit=3
+                    ->  Hash  (cost=7.00..7.00 rows=300 width=24) (actual time=0.072..0.073 rows=300.00 loops=3)
+                          Buckets: 1024  Batches: 1  Memory Usage: 25kB
+                          Buffers: shared hit=12
+                          ->  Seq Scan on merchants m  (cost=0.00..7.00 rows=300 width=24) (actual time=0.029..0.049 rows=300.00 loops=3)
+                                Buffers: shared hit=12
+Planning:
+  Buffers: shared hit=369
+Planning Time: 1.171 ms
+Execution Time: 9.757 ms
+=== R7 run 2 ===
+SET
+Limit  (cost=9489.05..9494.87 rows=50 width=292) (actual time=8.392..9.514 rows=50.00 loops=1)
+  Buffers: shared hit=7358
+  ->  Gather Merge  (cost=9489.05..9514.44 rows=218 width=292) (actual time=8.391..9.506 rows=50.00 loops=1)
+        Workers Planned: 2
+        Workers Launched: 2
+        Buffers: shared hit=7358
+        ->  Sort  (cost=8489.03..8489.26 rows=91 width=292) (actual time=6.139..6.142 rows=40.67 loops=3)
+              Sort Key: t.occurred_at DESC
+              Sort Method: quicksort  Memory: 74kB
+              Buffers: shared hit=7358
+              Worker 0:  Sort Method: quicksort  Memory: 49kB
+              Worker 1:  Sort Method: quicksort  Memory: 52kB
+              ->  Hash Left Join  (cost=12.20..8486.07 rows=91 width=292) (actual time=0.183..6.093 rows=66.67 loops=3)
+                    Hash Cond: ((t.merchant_id)::text = (m.id)::text)
+                    Buffers: shared hit=7342
+                    ->  Hash Left Join  (cost=1.45..8475.08 rows=91 width=251) (actual time=0.110..5.997 rows=66.67 loops=3)
+                          Hash Cond: ((t.category_id)::text = (c.id)::text)
+                          Buffers: shared hit=7330
+                          ->  Parallel Seq Scan on transactions t  (cost=0.00..8473.33 rows=91 width=252) (actual time=0.052..5.911 rows=66.67 loops=3)
+                                Filter: ((user_id)::text = 'usr_01h7x8a9b2c3d4e5f6g7h8j9k0'::text)
+                                Rows Removed by Filter: 66600
+                                Buffers: shared hit=7327
+                          ->  Hash  (cost=1.20..1.20 rows=20 width=23) (actual time=0.053..0.054 rows=20.00 loops=3)
+                                Buckets: 1024  Batches: 1  Memory Usage: 10kB
+                                Buffers: shared hit=3
+                                ->  Seq Scan on categories c  (cost=0.00..1.20 rows=20 width=23) (actual time=0.038..0.043 rows=20.00 loops=3)
+                                      Buffers: shared hit=3
+                    ->  Hash  (cost=7.00..7.00 rows=300 width=24) (actual time=0.067..0.067 rows=300.00 loops=3)
+                          Buckets: 1024  Batches: 1  Memory Usage: 25kB
+                          Buffers: shared hit=12
+                          ->  Seq Scan on merchants m  (cost=0.00..7.00 rows=300 width=24) (actual time=0.016..0.039 rows=300.00 loops=3)
+                                Buffers: shared hit=12
+Planning:
+  Buffers: shared hit=369
+Planning Time: 0.506 ms
+Execution Time: 9.545 ms
+=== R7 run 3 ===
+SET
+Limit  (cost=9489.05..9494.87 rows=50 width=292) (actual time=7.917..8.888 rows=50.00 loops=1)
+  Buffers: shared hit=7358
+  ->  Gather Merge  (cost=9489.05..9514.44 rows=218 width=292) (actual time=7.917..8.878 rows=50.00 loops=1)
+        Workers Planned: 2
+        Workers Launched: 2
+        Buffers: shared hit=7358
+        ->  Sort  (cost=8489.03..8489.26 rows=91 width=292) (actual time=5.944..5.951 rows=41.67 loops=3)
+              Sort Key: t.occurred_at DESC
+              Sort Method: quicksort  Memory: 70kB
+              Buffers: shared hit=7358
+              Worker 0:  Sort Method: quicksort  Memory: 55kB
+              Worker 1:  Sort Method: quicksort  Memory: 49kB
+              ->  Hash Left Join  (cost=12.20..8486.07 rows=91 width=292) (actual time=0.252..5.899 rows=66.67 loops=3)
+                    Hash Cond: ((t.merchant_id)::text = (m.id)::text)
+                    Buffers: shared hit=7342
+                    ->  Hash Left Join  (cost=1.45..8475.08 rows=91 width=251) (actual time=0.184..5.814 rows=66.67 loops=3)
+                          Hash Cond: ((t.category_id)::text = (c.id)::text)
+                          Buffers: shared hit=7330
+                          ->  Parallel Seq Scan on transactions t  (cost=0.00..8473.33 rows=91 width=252) (actual time=0.104..5.712 rows=66.67 loops=3)
+                                Filter: ((user_id)::text = 'usr_01h7x8a9b2c3d4e5f6g7h8j9k0'::text)
+                                Rows Removed by Filter: 66600
+                                Buffers: shared hit=7327
+                          ->  Hash  (cost=1.20..1.20 rows=20 width=23) (actual time=0.069..0.069 rows=20.00 loops=3)
+                                Buckets: 1024  Batches: 1  Memory Usage: 10kB
+                                Buffers: shared hit=3
+                                ->  Seq Scan on categories c  (cost=0.00..1.20 rows=20 width=23) (actual time=0.056..0.058 rows=20.00 loops=3)
+                                      Buffers: shared hit=3
+                    ->  Hash  (cost=7.00..7.00 rows=300 width=24) (actual time=0.061..0.061 rows=300.00 loops=3)
+                          Buckets: 1024  Batches: 1  Memory Usage: 25kB
+                          Buffers: shared hit=12
+                          ->  Seq Scan on merchants m  (cost=0.00..7.00 rows=300 width=24) (actual time=0.022..0.036 rows=300.00 loops=3)
+                                Buffers: shared hit=12
+Planning:
+  Buffers: shared hit=369
+Planning Time: 0.569 ms
+Execution Time: 8.926 ms

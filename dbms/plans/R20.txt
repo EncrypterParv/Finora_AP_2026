@@ -1,0 +1,30 @@
+=== R20 run 1 ===
+SET
+Index Scan using uq_transactions_dedup_hash on transactions  (cost=0.42..8.44 rows=1 width=47) (actual time=0.017..0.021 rows=1.00 loops=1)
+  Index Cond: ((dedup_hash)::text = 'a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2'::text)
+  Index Searches: 1
+  Buffers: shared hit=6
+Planning:
+  Buffers: shared hit=109
+Planning Time: 0.216 ms
+Execution Time: 0.039 ms
+=== R20 run 2 ===
+SET
+Index Scan using uq_transactions_dedup_hash on transactions  (cost=0.42..8.44 rows=1 width=47) (actual time=0.014..0.014 rows=1.00 loops=1)
+  Index Cond: ((dedup_hash)::text = 'a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2'::text)
+  Index Searches: 1
+  Buffers: shared hit=4
+Planning:
+  Buffers: shared hit=109
+Planning Time: 0.171 ms
+Execution Time: 0.029 ms
+=== R20 run 3 ===
+SET
+Index Scan using uq_transactions_dedup_hash on transactions  (cost=0.42..8.44 rows=1 width=47) (actual time=0.022..0.023 rows=1.00 loops=1)
+  Index Cond: ((dedup_hash)::text = 'a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2'::text)
+  Index Searches: 1
+  Buffers: shared hit=4
+Planning:
+  Buffers: shared hit=109
+Planning Time: 0.213 ms
+Execution Time: 0.040 ms

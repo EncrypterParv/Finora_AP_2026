@@ -1,0 +1,45 @@
+=== W14 run 1 ===
+BEGIN
+SET
+DELETE 1
+Insert on transactions  (cost=0.00..0.01 rows=0 width=0) (actual time=0.111..0.111 rows=0.00 loops=1)
+  Buffers: shared hit=24 dirtied=1 written=1
+  ->  Result  (cost=0.00..0.01 rows=1 width=1678) (actual time=0.002..0.002 rows=1.00 loops=1)
+Planning Time: 0.014 ms
+Trigger for constraint fk_transactions_user_id: time=0.194 calls=1
+Trigger for constraint fk_transactions_account_id: time=0.103 calls=1
+Trigger for constraint fk_transactions_category_id: time=0.009 calls=1
+Trigger for constraint fk_transactions_merchant_id: time=0.006 calls=1
+Trigger for constraint fk_transactions_account_user: time=0.033 calls=1
+Execution Time: 0.462 ms
+ROLLBACK
+=== W14 run 2 ===
+BEGIN
+SET
+DELETE 1
+Insert on transactions  (cost=0.00..0.01 rows=0 width=0) (actual time=0.074..0.074 rows=0.00 loops=1)
+  Buffers: shared hit=24
+  ->  Result  (cost=0.00..0.01 rows=1 width=1678) (actual time=0.002..0.002 rows=1.00 loops=1)
+Planning Time: 0.015 ms
+Trigger for constraint fk_transactions_user_id: time=0.236 calls=1
+Trigger for constraint fk_transactions_account_id: time=0.121 calls=1
+Trigger for constraint fk_transactions_category_id: time=0.011 calls=1
+Trigger for constraint fk_transactions_merchant_id: time=0.007 calls=1
+Trigger for constraint fk_transactions_account_user: time=0.037 calls=1
+Execution Time: 0.492 ms
+ROLLBACK
+=== W14 run 3 ===
+BEGIN
+SET
+DELETE 1
+Insert on transactions  (cost=0.00..0.01 rows=0 width=0) (actual time=0.062..0.062 rows=0.00 loops=1)
+  Buffers: shared hit=24
+  ->  Result  (cost=0.00..0.01 rows=1 width=1678) (actual time=0.002..0.002 rows=1.00 loops=1)
+Planning Time: 0.011 ms
+Trigger for constraint fk_transactions_user_id: time=0.164 calls=1
+Trigger for constraint fk_transactions_account_id: time=0.096 calls=1
+Trigger for constraint fk_transactions_category_id: time=0.009 calls=1
+Trigger for constraint fk_transactions_merchant_id: time=0.006 calls=1
+Trigger for constraint fk_transactions_account_user: time=0.029 calls=1
+Execution Time: 0.372 ms
+ROLLBACK

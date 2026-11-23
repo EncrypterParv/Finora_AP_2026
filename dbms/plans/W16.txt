@@ -1,0 +1,30 @@
+=== W16 run 1 ===
+BEGIN
+SET
+DELETE 1
+Insert on users  (cost=0.00..0.01 rows=0 width=0) (actual time=0.046..0.046 rows=0.00 loops=1)
+  Buffers: shared hit=10
+  ->  Result  (cost=0.00..0.01 rows=1 width=1724) (actual time=0.001..0.001 rows=1.00 loops=1)
+Planning Time: 0.009 ms
+Execution Time: 0.050 ms
+ROLLBACK
+=== W16 run 2 ===
+BEGIN
+SET
+DELETE 1
+Insert on users  (cost=0.00..0.01 rows=0 width=0) (actual time=0.039..0.039 rows=0.00 loops=1)
+  Buffers: shared hit=10
+  ->  Result  (cost=0.00..0.01 rows=1 width=1724) (actual time=0.001..0.001 rows=1.00 loops=1)
+Planning Time: 0.008 ms
+Execution Time: 0.043 ms
+ROLLBACK
+=== W16 run 3 ===
+BEGIN
+SET
+DELETE 1
+Insert on users  (cost=0.00..0.01 rows=0 width=0) (actual time=0.037..0.037 rows=0.00 loops=1)
+  Buffers: shared hit=10
+  ->  Result  (cost=0.00..0.01 rows=1 width=1724) (actual time=0.001..0.001 rows=1.00 loops=1)
+Planning Time: 0.008 ms
+Execution Time: 0.041 ms
+ROLLBACK
